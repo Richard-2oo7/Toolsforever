@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolsforever</title>
+    <link rel="stylesheet" href="inlog.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+</head>
+<body>
+    <div class="inlogbox">
+        <div class="inlogbox_header">
+            <img src="images/Logo.png" class="logo">
+            <h1>ToolsForEver</h1>
+        </div>
+        <div class="form_box">
+        <form method="post" class="formInlog" action="index.html">
+            <label>Gebruikersnaam</label>
+            <input type="text" class="input" name="naam">
+            <label>Wachtwoord</label>
+            <input type="password" class="input" name="wachtwoord">
+            <div class="inlogbox_footer">
+                <div class="onthoudgegevensbox">
+                    <input type="checkbox" id="checkbox" name="chekbox">  
+                    <label for="checkbox" class="checkboxTekst"> Deze gegevens onthouden</label>
+            </div>
+                <button class="inlogbtn" name="loginbtn" type="submit">Inloggen</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    // const form = document.querySelector(".formInlog");
+
+    // form.addEventListener('submit', function(event) {
+    //         event.preventDefault();
+    //         // Voeg hier je logica toe om de inloggegevens te verwerken, bijv. via AJAX
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload() = function(){
+
+    //     }
+    //     xhr.open("POST", "inlog.php");
+    //     xhr.send();
+
+
+    //     });
+
+</script>
+</body>
+</html>

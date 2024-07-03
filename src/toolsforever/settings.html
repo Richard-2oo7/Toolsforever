@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        body{
+            padding: 10px;
+        }
+        button{
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            padding: 10px;
+            border: none;
+        }
+
+        .contentBox{
+            display: flex;
+            flex-direction: row;
+            column-gap: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .locatie{
+            padding: 10px;
+            border: 1px solid black;
+            width: 200px;
+            
+
+        }
+
+        legend {
+            font-weight: bold;
+            text-align: center; /* Centreren van de tekst in de legend */
+            padding: 20px;
+        }
+        legend h1 {
+            font-size: 2em; /* Pas de lettergrootte naar wens aan */
+        }
+
+        fieldset{
+            padding: 20px;
+        }
+
+        .nieuweLocatieBtn{
+            width: 100%
+        }
+
+        .nieuwLocatieInput{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .nieuwLocatieInput:focus{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <select style="display: none;" class="tempSelect"></select>
+    <button onclick='location.href ="index.html"'>Home</button>
+    <div class="contentBox">
+        <div class="nieuweLocatiebox">
+            <fieldset>
+                <legend><h1>Locaties</h1></legend>
+                <div class="alleLocaties"></div>
+                <button class="nieuweLocatieBtn">Nieuwe locatie</button>
+        </div>
+        <div >2e box</div>
+    </div>
+    <script>
+        let tempSelect = document.querySelector(".tempSelect");
+        let locatieBox = document.querySelector(".alleLocaties");
+        DrawLocatieTable();
+        function DrawLocatieTable(){
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                console.log(xhr.responseText);
+                locatieBox.innerHTML = "";
+                tempSelect.innerHTML = xhr.responseText;
+                let options = tempSelect.querySelectorAll("option");
+                options.forEach(option => {
+                    if(option.innerHTML != "Locatie"){
+                    let div = document.createElement("div");
+                    div.classList.add("locatie");
+                    div.innerHTML = option.innerHTML
+                    locatieBox.appendChild(div);
+                    }
+                });
+            }
+            xhr.open("POST", "Locaties.php")
+            xhr.send();
+        }
+
+        const nieuweLocatieBtn = document.querySelector(".nieuweLocatieBtn");
+            let locatieInput = document.createElement("input");
+        nieuweLocatieBtn.onclick = function(){
+
+
+            if(nieuweLocatieBtn.innerHTML != "Voeg toe"){
+            locatieInput.placeholder = "Nieuwe locatie";
+            locatieInput.classList.add("nieuwLocatieInput");
+            locatieBox.appendChild(locatieInput);
+            nieuweLocatieBtn.innerHTML = "Voeg toe";
+            } else{
+                let nieuweLocatie = locatieInput.value.replace(/^\s+|\s+$/gm,'');
+                if(nieuweLocatie){
+                console.log(locatieInput.value);
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    DrawLocatieTable();
+                }
+                xhr.open("POST", "nieuweLocatie.php");
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("Locatie=" + nieuweLocatie);
+            }
+            }
+        }        
+    </script>
+</body>
+</html>

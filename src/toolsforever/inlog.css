@@ -1,0 +1,65 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    -ms-content-zoom-chaining: 150%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inlogbox_header{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.logo{
+    height: 70px;
+    display: inline-block;
+}
+h1{
+    display: inline-block;
+}
+.form_box{
+    box-shadow: 0 0 7px #bababa;
+    width: 300px;
+    padding: 20px;
+    border-radius: 3px;
+}
+.input{
+    margin-bottom: 15px;
+    height: 2rem;
+    width: 100%;
+    border-color: 1px solid;
+}
+.inlogbox_footer{
+    width: auto;
+    display: flex;
+}
+.onthoudgegevensbox{
+    height: 10px;
+    display: flex;
+    align-items: center;
+}
+.checkboxTekst{
+    margin-left: 5px;
+    color: #555555;
+    font-size: 14px;
+}
+
+.inlogbtn{
+    color: white;
+    background-color: black;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    margin-left: auto;
+}
+
+/* div{
+    border: 1px solid red;
+} */
